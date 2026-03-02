@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameZone · groups & affiliate hub</title>
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- ============================================ -->
+    <!-- PLACE YOUR ADSENSE CODE HERE (META TAG/VERIFICATION IF NEEDED) -->
+    <!-- Google AdSense meta tag (optional but recommended) -->
+    <meta name="google-adsense-account" content="ca-pub-xxxxxxxxxxxxx">
+    
+    <!-- AdSense script - REPLACE WITH YOUR ACTUAL ADSENSE CODE -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-xxxxxxxxxxxxx"
+     crossorigin="anonymous"></script>
+    <!-- ============================================ -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f4f7fc;
+            color: #1a2639;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2rem 2rem 1.5rem 1.5rem;
+            box-shadow: 0 20px 40px -10px rgba(0,20,30,0.15);
+            overflow: hidden;
+            padding: 2rem 2rem 3rem;
+        }
+
+        /* HEADER / AFFILIATE BADGE */
+        .top-brand {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 2rem;
+        }
+        .logo h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #1e2b4f, #2f3e6e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+        .affiliate-tag {
+            background: #f0eefb;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #3a4f8c;
+            border: 1px solid #cdd9ff;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .affiliate-tag i {
+            margin-right: 6px;
+            color: #ff9900;
+        }
+
+        /* AD SPACE HEADER (example 728x90) */
+        .ad-horizontal {
+            background: #e9edf4;
+            border-radius: 20px;
+            padding: 0.1rem; /* Minimal padding, ad will fill */
+            margin: 1.5rem 0 2.5rem;
+            text-align: center;
+            border: 2px dashed #9aa9c0;
+            position: relative;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .ad-horizontal::before {
+            content: "ⓘ advertisement";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #f4f7fc;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #3f4f73;
+            padding: 0 10px;
+            letter-spacing: 0.4px;
+            z-index: 10;
+        }
+        .ad-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            width: 100%;
+            min-height: 90px;
+            background: #f4f7fc;
+        }
+        .ad-placeholder span {
+            background: #b9c4da;
+            padding: 0.6rem 2rem;
+            border-radius: 40px;
+            color: #1e293b;
+            font-weight: 600;
+            font-size: 1.3rem;
+        }
+
+        /* description */
+        .intro-text {
+            background: #eef3fa;
+            padding: 1.8rem 2rem;
+            border-radius: 2rem;
+            margin-bottom: 3rem;
+            border-left: 6px solid #3f6ef0;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+        }
+        .intro-text p {
+            font-size: 1.2rem;
+            font-weight: 400;
+            max-width: 80%;
+        }
+        .intro-text i {
+            color: #2c3e74;
+            margin-right: 10px;
+        }
+
+        /* ====== LINKS CATEGORIES ====== */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 650;
+            margin: 2.5rem 0 1.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 3px solid #e1eaf5;
+            padding-bottom: 0.5rem;
+        }
+        .section-title i {
+            color: #2f4b9e;
+            background: #dde5f5;
+            padding: 0.5rem;
+            border-radius: 14px;
+        }
+
+        .group-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin-top: 1rem;
+        }
+
+        /* link cards */
+        .link-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem 1.5rem 1.8rem;
+            box-shadow: 0 10px 20px -8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eef3f8;
+            transition: transform 0.15s ease, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .link-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -10px rgba(20, 40, 80, 0.2);
+            border-color: #b7d0f0;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+        .card-header i {
+            font-size: 2rem;
+            width: 2.5rem;
+            color: #2952a0;
+        }
+        .card-header h3 {
+            font-size: 1.5rem;
+            font-weight: 650;
+        }
+        .badge-type {
+            font-size: 0.8rem;
+            background: #d1ddeb;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            margin-left: auto;
+            font-weight: 600;
+            color: #1a2b4e;
+        }
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #eef3f8;
+            border-radius: 50px;
+            padding: 0.9rem 1.2rem;
+            margin: 1rem 0 0.8rem;
+            text-decoration: none;
+            color: #1e2e5c;
+            font-weight: 600;
+            border: 1.5px solid transparent;
+            transition: all 0.2s;
+            font-size: 1rem;
+        }
+        .btn-link i {
+            font-size: 1.1rem;
+        }
+        .btn-link:hover {
+            background: #1f3a78;
+            color: white;
+            border-color: #1f3a78;
+        }
+        .btn-link.whatsapp:hover {
+            background: #25D366;
+            border-color: #128C7E;
+            color: white;
+        }
+        .btn-link.telegram:hover {
+            background: #0088cc;
+            border-color: #006699;
+            color: white;
+        }
+
+        .meta-note {
+            font-size: 0.9rem;
+            color: #4a5e85;
+            margin-top: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* two column layout for chat / update / ads */
+        .split-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0 1rem;
+        }
+        .updates-col {
+            flex: 2;
+            min-width: 280px;
+        }
+        .chat-col {
+            flex: 1.2;
+            min-width: 260px;
+        }
+
+        .sub-section {
+            margin-bottom: 2rem;
+        }
+        .sub-section h4 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1.2rem;
+            color: #152642;
+        }
+
+        .vertical-link-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+        .vertical-link-list a {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: #f8faff;
+            padding: 0.9rem 1.4rem;
+            border-radius: 60px;
+            text-decoration: none;
+            color: #162b4d;
+            font-weight: 500;
+            border: 1px solid #dbebff;
+            transition: 0.1s;
+        }
+        .vertical-link-list a i {
+            font-size: 1.3rem;
+            width: 1.8rem;
+        }
+        .vertical-link-list a:hover {
+            background: #dde9fc;
+            border-color: #91b3e0;
+            transform: scale(1.01);
+        }
+
+        /* advertisement box (in content) */
+        .ad-box {
+            background: linear-gradient(145deg, #f2f6fe, #ffffff);
+            border-radius: 30px;
+            padding: 0.1rem; /* Minimal padding, ad will fill */
+            margin: 2rem 0 1.5rem;
+            border: 2px solid #bed0f0;
+            box-shadow: 0 10px 0 #d4e0fc;
+            text-align: center;
+            min-height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .ad-box p {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #21375c;
+            letter-spacing: 0.3px;
+            margin-bottom: 0.8rem;
+        }
+        .ad-box .ad-inner {
+            background: #dfe7fd;
+            border-radius: 18px;
+            padding: 1.2rem;
+            color: #11223b;
+            border: 1px dashed #3865a0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        /* native ad style */
+        .ad-native {
+            background: #deeafb;
+            border-radius: 40px;
+            padding: 0.1rem;
+            margin: 2.2rem 0 1.8rem;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px dashed #9aa9c0;
+            position: relative;
+        }
+        .ad-native::before {
+            content: "ⓘ advertisement";
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            background: #f4f7fc;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #3f4f73;
+            padding: 0 10px;
+            letter-spacing: 0.4px;
+            z-index: 10;
+        }
+
+        /* footer note / affiliate */
+        .footer-affiliate {
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            text-align: center;
+            border-top: 2px solid #dae5f5;
+            color: #405982;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem 2rem;
+        }
+        .footer-affiliate span i {
+            color: #f7b731;
+        }
+
+        /* responsive */
+        @media (max-width: 680px) {
+            .container { padding: 1.5rem; }
+            .intro-text p { max-width: 100%; }
+            .section-title { font-size: 1.6rem; }
+        }
+
+        /* Ad container styling - all ad containers will be filled by AdSense */
+        .adsense-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Hide placeholder when ad loads */
+        .ad-placeholder.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- header & affiliate note -->
+    <div class="top-brand">
+        <div class="logo">
+            <h1><i class="fas fa-gamepad" style="color: #2f4896; margin-right: 10px;"></i>GameZone hub</h1>
+        </div>
+        <div class="affiliate-tag">
+            <i class="fas fa-bullhorn"></i> Affiliate · earn with us
+        </div>
+    </div>
+
+    <!-- AD SPACE #1 (TOP, 728x90) - AdSense ready -->
+    <div class="ad-horizontal" id="ad-slot-1">
+        <div class="ad-placeholder" id="placeholder-1">
+            <i class="fas fa-ad"></i>
+            <span>AdSense will appear here</span>
+            <i class="fas fa-arrow-pointer"></i>
+        </div>
+        <!-- AdSense code will be injected here dynamically -->
+    </div>
+
+    <!-- intro -->
+    <div class="intro-text">
+        <p><i class="fas fa-hand-point-right fa-fw"></i> Join the biggest gaming & betting communities. WhatsApp & Telegram groups for <strong>FC Mobile, DreamLeague, Free Fire, Call of Duty, Betting odds</strong>. Scroll down for all links + chat & update channels.</p>
+    </div>
+
+    <!-- MAIN GROUP SECTION (betting, fc mobile, dreamleague, freefire, cod) -->
+    <div class="section-title">
+        <i class="fas fa-users"></i> 
+        <span>🎮 core game groups & betting</span>
+    </div>
+
+    <div class="group-grid">
+        <!-- 1. betting links -->
+        <div class="link-card">
+            <div class="card-header">
+                <i class="fas fa-dice" style="color:#c92a2a;"></i>
+                <h3>Betting odds</h3>
+                <span class="badge-type">VIP</span>
+            </div>
+            <p>Football, eSports & live odds. Daily tips.</p>
+            <a href="#" class="btn-link whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp group</a>
+            <a href="#" class="btn-link telegram"><i class="fab fa-telegram"></i> Telegram channel</a>
+            <div class="meta-note"><i class="fas fa-link"></i> link betting · over 18+</div>
+        </div>
+        <!-- 2. FC mobile -->
+        <div class="link-card">
+            <div class="card-header">
+                <i class="fas fa-futbol" style="color:#0f52ba;"></i>
+                <h3>FC Mobile</h3>
+                <span class="badge-type">game</span>
+            </div>
+            <p>Tournaments, giveaways, squad advice.</p>
+            <a href="#" class="btn-link whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp group</a>
+            <a href="#" class="btn-link telegram"><i class="fab fa-telegram"></i> Telegram group</a>
+            <div class="meta-note"><i class="fas fa-robot"></i> 2,300+ members</div>
+        </div>
+        <!-- 3. DreamLeague soccer -->
+        <div class="link-card">
+            <div class="card-header">
+                <i class="fas fa-trophy" style="color:#c49b1f;"></i>
+                <h3>DreamLeague</h3>
+                <span class="badge-type">soccer</span>
+            </div>
+            <p>Mods, gems, drafts & head-to-head.</p>
+            <a href="#" class="btn-link whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp group</a>
+            <a href="#" class="btn-link telegram"><i class="fab fa-telegram"></i> Telegram supergroup</a>
+            <div class="meta-note"><i class="fas fa-star"></i> daily updates</div>
+        </div>
+        <!-- 4. Free Fire -->
+        <div class="link-card">
+            <div class="card-header">
+                <i class="fas fa-skull" style="color:#e85d04;"></i>
+                <h3>Free Fire</h3>
+                <span class="badge-type">battle royale</span>
+            </div>
+            <p>Custom rooms, guild recruitment, diamonds.</p>
+            <a href="#" class="btn-link whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp group</a>
+            <a href="#" class="btn-link telegram"><i class="fab fa-telegram"></i> Telegram channel</a>
+            <div class="meta-note"><i class="fas fa-fire"></i> active now</div>
+        </div>
+        <!-- 5. Call of Duty -->
+        <div class="link-card">
+            <div class="card-header">
+                <i class="fas fa-gun" style="color:#2f4858;"></i>
+                <h3>Call of Duty</h3>
+                <span class="badge-type">mobile / warzone</span>
+            </div>
+            <p>Loadouts, clan wars & scrims.</p>
+            <a href="#" class="btn-link whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp group</a>
+            <a href="#" class="btn-link telegram"><i class="fab fa-telegram"></i> Telegram chat</a>
+            <div class="meta-note"><i class="fas fa-bolt"></i> incl. CODM</div>
+        </div>
+    </div>
+
+    <!-- AD SPACE #2 (rectangle) - AdSense ready -->
+    <div class="ad-box" id="ad-slot-2">
+        <div class="ad-inner" id="placeholder-2">
+            <i class="fas fa-ad"></i>
+            <span>AdSense rectangle 300x250</span>
+            <i class="fas fa-square-poll-vertical"></i>
+        </div>
+    </div>
+
+    <!-- SPLIT: updates channels (left) / chat groups (right) -->
+    <div class="split-row">
+        <!-- LEFT COL: updates & channels -->
+        <div class="updates-col">
+            <div class="sub-section">
+                <h4><i class="fas fa-bell"></i> 📢 Update channels (announcements)</h4>
+                <div class="vertical-link-list">
+                    <a href="#"><i class="fab fa-telegram" style="color:#0088cc;"></i> Telegram channel · betting tips <span style="margin-left: auto;">🔔</span></a>
+                    <a href="#"><i class="fab fa-whatsapp" style="color:#25D366;"></i> WhatsApp channel · FC Mobile news</a>
+                    <a href="#"><i class="fab fa-telegram" style="color:#0088cc;"></i> DreamLeague updates + mods</a>
+                    <a href="#"><i class="fab fa-whatsapp"></i> Free Fire official announcements</a>
+                    <a href="#"><i class="fab fa-telegram"></i> CODM patch notes / events</a>
+                </div>
+            </div>
+            
+            <!-- AD SPACE #3 (in-column) - AdSense ready -->
+            <div class="ad-box" id="ad-slot-3" style="margin-top: 1rem;">
+                <div class="ad-inner" id="placeholder-3">
+                    <i class="fas fa-ad"></i>
+                    <span>AdSense in-column</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COL: chat groups / discussion -->
+        <div class="chat-col">
+            <div class="sub-section">
+                <h4><i class="fas fa-comments"></i> 💬 chat & discussion groups</h4>
+                <div class="vertical-link-list">
+                    <a href="#"><i class="fab fa-whatsapp"></i> Betting lounge (WhatsApp)</a>
+                    <a href="#"><i class="fab fa-telegram"></i> FC Mobile chat (Telegram)</a>
+                    <a href="#"><i class="fab fa-whatsapp"></i> DreamLeague talk</a>
+                    <a href="#"><i class="fab fa-telegram"></i> Free Fire hangout</a>
+                    <a href="#"><i class="fab fa-whatsapp"></i> COD: mobile squad</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AD SPACE #4 (native style) - AdSense ready -->
+    <div class="ad-native" id="ad-slot-4">
+        <div class="ad-placeholder" id="placeholder-4">
+            <i class="fas fa-ad" style="font-size: 2rem; color:#1f3a78;"></i>
+            <span style="font-weight: 600;">Google AdSense native space</span>
+            <span style="background: #2d4379; color:white; padding: 0.3rem 1.5rem; border-radius: 30px;">ad unit</span>
+        </div>
+    </div>
+
+    <!-- AD SPACE #5 (between affiliate section) - AdSense ready -->
+    <div class="ad-box" id="ad-slot-5" style="margin: 2rem 0;">
+        <div class="ad-inner" id="placeholder-5">
+            <i class="fas fa-ad"></i>
+            <span>AdSense display ad #5</span>
+        </div>
+    </div>
+
+    <!-- additional advertisement links (for affiliates) -->
+    <div class="section-title" style="margin-top: 1.2rem;">
+        <i class="fas fa-money-bill-trend-up"></i>
+        <span>📣 affiliate marketing / promoted offers</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+        <span style="background:#f2f0fc; padding:0.6rem 1.8rem; border-radius:40px;"><i class="fas fa-dice"></i> 1xBet partner</span>
+        <span style="background:#f2f0fc; padding:0.6rem 1.8rem; border-radius:40px;"><i class="fas fa-futbol"></i> DreamLeague gems</span>
+        <span style="background:#f2f0fc; padding:0.6rem 1.8rem; border-radius:40px;"><i class="fas fa-mobile"></i> FC Mobile coins</span>
+        <span style="background:#f2f0fc; padding:0.6rem 1.8rem; border-radius:40px;"><i class="fas fa-headset"></i> Free Fire elite pass</span>
+        <span style="background:#f2f0fc; padding:0.6rem 1.8rem; border-radius:40px;"><i class="fas fa-crosshairs"></i> COD points</span>
+    </div>
+
+    <!-- AD SPACE #6 (bottom) - AdSense ready -->
+    <div class="ad-native" id="ad-slot-6" style="margin-top: 2rem;">
+        <div class="ad-placeholder" id="placeholder-6">
+            <i class="fas fa-ad"></i>
+            <span>AdSense bottom banner</span>
+        </div>
+    </div>
+
+    <!-- bottom links: advertisements grouping -->
+    <div style="margin: 2.8rem 0 1rem; background: #e7efff; border-radius: 48px; padding: 1.8rem;">
+        <h4 style="display: flex; gap: 8px; margin-bottom: 1rem;"><i class="fas fa-link"></i> link for advertisement ( promo )</h4>
+        <div class="vertical-link-list" style="max-width: 500px;">
+            <a href="#"><i class="fas fa-envelope"></i> advertise@gamezonehub.com</a>
+            <a href="#"><i class="fas fa-phone-alt"></i> contact via WhatsApp (ad sales)</a>
+            <a href="#"><i class="fas fa-file-invoice"></i> media kit / rates 2025</a>
+        </div>
+    </div>
+
+    <!-- AD SPACE #7 (footer) - AdSense ready -->
+    <div class="ad-horizontal" id="ad-slot-7" style="margin-top: 2rem;">
+        <div class="ad-placeholder" id="placeholder-7">
+            <i class="fas fa-ad"></i>
+            <span>AdSense footer 728x90</span>
+            <i class="fas fa-arrow-pointer"></i>
+        </div>
+    </div>
+
+    <!-- footer affiliate disclaimer -->
+    <div class="footer-affiliate">
+        <span><i class="fas fa-handshake"></i> Affiliate links — we may earn commission</span>
+        <span><i class="fas fa-shield-alt"></i> 18+ only for betting groups</span>
+        <span><i class="fab fa-whatsapp"></i> · <i class="fab fa-telegram"></i>  all groups active</span>
+    </div>
+
+    <!-- tiny note: real links go here (placeholders used) -->
+    <p style="text-align: center; color:#8195b5; margin-top: 2rem; font-size: 0.85rem;">🔗 replace "#" with your actual invite links — ready for GitHub Pages</p>
+</div>
+
+<!-- ============================================ -->
+<!-- ADSENSE AUTOMATIC AD INJECTION SCRIPT -->
+<!-- This script will create 7 ad units across your page -->
+<!-- REPLACE 'ca-pub-xxxxxxxxxxxxx' WITH YOUR PUBLISHER ID -->
+<!-- ============================================ -->
+<script>
+    (function() {
+        // ==================================================
+        // CONFIGURATION - UPDATE WITH YOUR ADSENSE PUBLISHER ID
+        // ==================================================
+        const PUBLISHER_ID = 'ca-pub-xxxxxxxxxxxxx'; // REPLACE THIS WITH YOUR ACTUAL PUBLISHER ID
+        
+        // Ad unit configurations - 7 different slots
+        const adConfigs = [
+            { slot: 'ad-slot-1', format: 'horizontal', size: '728x90', placeholder: 'placeholder-1' },
+            { slot: 'ad-slot-2', format: 'rectangle', size: '300x250', placeholder: 'placeholder-2' },
+            { slot: 'ad-slot-3', format: 'rectangle', size: '300x250', placeholder: 'placeholder-3' },
+            { slot: 'ad-slot-4', format: 'native', size: 'responsive', placeholder: 'placeholder-4' },
+            { slot: 'ad-slot-5', format: 'rectangle', size: '300x250', placeholder: 'placeholder-5' },
+            { slot: 'ad-slot-6', format: 'horizontal', size: '728x90', placeholder: 'placeholder-6' },
+            { slot: 'ad-slot-7', format: 'horizontal', size: '728x90', placeholder: 'placeholder-7' }
+        ];
+
+        // Function to hide placeholder
+        function hidePlaceholder(placeholderId) {
+            const placeholder = document.getElementById(placeholderId);
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+        }
+
+        // Function to create AdSense ad element
+        function createAdElement(containerId, config) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            // Hide the placeholder
+            if (config.placeholder) {
+                hidePlaceholder(config.placeholder);
+            }
+
+            // Create ins element for AdSense
+            const ins = document.createElement('ins');
+            ins.className = 'adsbygoogle';
+            ins.style.display = 'block';
+            
+            // Set size based on format
+            if (config.size === '728x90') {
+                ins.style.width = '728px';
+                ins.style.height = '90px';
+                ins.setAttribute('data-ad-format', 'horizontal');
+            } else if (config.size === '300x250') {
+                ins.style.width = '300px';
+                ins.style.height = '250px';
+                ins.setAttribute('data-ad-format', 'rectangle');
+            } else {
+                ins.setAttribute('data-ad-format', 'auto');
+                ins.style.width = '100%';
+                ins.style.height = 'auto';
+            }
+            
+            // AdSense required attributes
+            ins.setAttribute('data-ad-client', PUBLISHER_ID);
+            ins.setAttribute('data-ad-slot', 'xxxxxxxxxx'); // You'll need to replace with actual ad slot IDs
+            ins.setAttribute('data-ad-layout', 'in-article');
+            ins.setAttribute('data-full-width-responsive', 'true');
+            
+            // Clear container and append ins
+            container.innerHTML = '';
+            container.appendChild(ins);
+        }
+
+        // Initialize all ad slots when page loads
+        window.addEventListener('load', function() {
+            // First, ensure AdSense script is loaded
+            if (typeof adsbygoogle === 'undefined') {
+                console.warn('AdSense script not loaded yet. Please check your publisher ID.');
+                return;
+            }
+
+            // Create each ad unit
+            adConfigs.forEach(config => {
+                createAdElement(config.slot, config);
+            });
+
+            // Push ads to AdSense
+            try {
+                (adsbygoogle = window.adsbygoogle || []).push({});
+                console.log('AdSense ads initialized for 7 slots');
+            } catch (e) {
+                console.error('AdSense error:', e);
+            }
+        });
+
+        // Optional: For pop-up/pop-under ads (requires AdXSense or similar)
+        // Note: Standard AdSense doesn't allow pop-ups. This is for future alternative ad networks
+        function initializePopups() {
+            // This is a placeholder for pop-up ad integration
+            // You can add code for other ad networks that support pop-ups here
+            console.log('Pop-up ad space ready for alternative ad networks');
+        }
+        
+        // Call popup initializer
+        initializePopups();
+    })();
+</script>
+
+<!-- ============================================ -->
+<!-- IMPORTANT NOTES FOR ADSENSE SETUP: -->
+<!-- 1. Replace 'ca-pub-xxxxxxxxxxxxx' with your actual AdSense publisher ID in both the meta tag and script -->
+<!-- 2. After AdSense approval, you'll get ad slot IDs - replace 'xxxxxxxxxx' in the data-ad-slot attributes -->
+<!-- 3. Each ad unit needs its own unique slot ID from your AdSense account -->
+<!-- 4. The placeholders will automatically hide when real ads load -->
+<!-- ============================================ -->
+
+<!-- GitHub Pages deployment ready - all paths are relative -->
+</body>
+</html>
